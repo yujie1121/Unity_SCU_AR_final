@@ -7,7 +7,8 @@ public class PlayerSpawn : MonoBehaviour
     private GameObject prefabToSpawn;
     [SerializeField]
     private Transform spawnParent;
-    [SerializeField] private int maxMushrooms = 3; 
+    [SerializeField] private int maxMushrooms = 3;
+    [SerializeField] private CountdownTimer countdownTimer;
     [SerializeField] private float lockoutTime = 5f; 
 
     private int currentMushrooms = 0;
@@ -18,7 +19,6 @@ public class PlayerSpawn : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
-        // UpdateMushroomCountText();
     }
 
     private void Update()
@@ -27,7 +27,6 @@ public class PlayerSpawn : MonoBehaviour
         {
             SpawnMushroom();
             currentMushrooms++;
-            // UpdateMushroomCountText();
 
             if (currentMushrooms >= maxMushrooms)
             {
@@ -48,21 +47,22 @@ public class PlayerSpawn : MonoBehaviour
     private IEnumerator Lockout()
     {
         isLocked = true;
+        countdownTimer.gameObject.SetActive(true);
+        //countdownTimer.StartCountdown();
         yield return new WaitForSeconds(lockoutTime);
         currentMushrooms = 0;
         isLocked = false;
-        // UpdateMushroomCountText();
+       
     }
 
-    /*
-    private void UpdateMushroomCountText()
+    /*private void ResetSpawn()
     {
-        if (mushroomCountText != null)
+        currentMushrooms = 0;
+        isLocked = false;
+
+        if (countdownTimer != null)
         {
-            mushroomCountText.text = isLocked
-                ? "Mushroom spawning locked!"
-                : $"Mushrooms: {currentMushrooms}/{maxMushrooms}";
+            countdownTimer.ResetTimer();
         }
-    }
-    */
+    }*/
 }

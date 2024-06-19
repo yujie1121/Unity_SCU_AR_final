@@ -7,6 +7,7 @@ public class HpHouse : HpSystem
     private Image imgHp;
 
     private float hpMax;
+    // private bool stop = false;
 
     private string enemyAttackAreaName = "敵人攻擊區域";
 
@@ -16,6 +17,15 @@ public class HpHouse : HpSystem
     {
         hpMax = hp;
     }
+    /*
+    private void Start()
+    {
+        ClearTimer clearTimer = FindObjectOfType<ClearTimer>();
+        if (clearTimer != null)
+        {
+            clearTimer.OnVictory.AddListener(StopHpCalculation);
+        }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,8 +44,17 @@ public class HpHouse : HpSystem
     protected override void Dead()
     {
         base.Dead();
+        ClearTimer timer = FindObjectOfType<ClearTimer>();
+        timer.StopTimer();
         GameObject canvasController = GameObject.Find("畫布控制器");
         canvasManager = canvasController.GetComponent<CanvasManager>();
         canvasManager.ShowDefeatCanvas();
     }
+
+    /*
+    private void StopHpCalculation()
+    {
+        stop = true;
+    }
+    */
 }

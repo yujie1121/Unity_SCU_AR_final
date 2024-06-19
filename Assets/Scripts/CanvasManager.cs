@@ -28,7 +28,7 @@ public class CanvasManager : MonoBehaviour
     private IEnumerator DisplayCanvas(GameObject canvasToShow)
     {
         canvasToShow.SetActive(true);
-        yield return new WaitForSeconds(displayTime);
+        yield return new WaitForSecondsRealtime(displayTime);
         canvasToShow.SetActive(false);
         gameCanvas.SetActive(true);
     }
