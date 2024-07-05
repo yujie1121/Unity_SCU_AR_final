@@ -8,6 +8,8 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] private GameObject gameCanvas;
     [SerializeField] private float displayTime = 3f;
 
+    private PlayerSpawn playerSpawn;
+
     private void Start()
     {
         defeatCanvas.SetActive(false);

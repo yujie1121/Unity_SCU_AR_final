@@ -9,22 +9,6 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField, Header("¥Í¦¨¶¡¹j"), Range(0, 5)]
     private float spawnInterval = 3;
 
-    // private bool isSpawning = false;
-
-    /*private void Start()
-    {
-        StartSpawning();
-    }
-
-    public void StartSpawning()
-    {
-        if (!isSpawning)
-        {
-            isSpawning = true;
-            StartCoroutine(SpawnEnemy());
-        }
-    }*/
-
     private void Awake()
     {
         InvokeRepeating("SpawnEnemy", 0, spawnInterval);

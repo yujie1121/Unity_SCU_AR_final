@@ -15,9 +15,9 @@ public class CountdownTimer : MonoBehaviour
     private float currentTime;
     private bool isCountingDown = false;
 
-    private void Start()
+    public void Start()
     {
-        // gameObject.SetActive(true);
+        gameObject.SetActive(true);
         currentTime = countdownTime;
         UpdateTimeText();
         UpdateCircleFillAmount();
@@ -41,9 +41,11 @@ public class CountdownTimer : MonoBehaviour
     {
         if (!isCountingDown)
         {
+            currentTime = countdownTime;
             gameObject.SetActive(true);
             StartCoroutine(CountdownCoroutine());
         }
+        
     }
 
     private IEnumerator CountdownCoroutine()
@@ -60,7 +62,7 @@ public class CountdownTimer : MonoBehaviour
             yield return null;
         }
 
-        currentTime = 0;
+        // currentTime = 0;
         UpdateTimeText();
         UpdateCircleFillAmount();  
         isCountingDown = false;

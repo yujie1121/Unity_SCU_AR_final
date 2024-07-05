@@ -48,21 +48,9 @@ public class PlayerSpawn : MonoBehaviour
     {
         isLocked = true;
         countdownTimer.gameObject.SetActive(true);
-        //countdownTimer.StartCountdown();
+        countdownTimer.Start();
         yield return new WaitForSeconds(lockoutTime);
         currentMushrooms = 0;
         isLocked = false;
-       
     }
-
-    /*private void ResetSpawn()
-    {
-        currentMushrooms = 0;
-        isLocked = false;
-
-        if (countdownTimer != null)
-        {
-            countdownTimer.ResetTimer();
-        }
-    }*/
 }
